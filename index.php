@@ -21,27 +21,33 @@ var_export($animal_name);
 echo "<BR>";
 var_export($animal_name,true);
 */
-define("TOKEN", "fred_wechat_test");
-//
-$signature = $_GET['signature'];
-$nonce = $_GET['nonce'];
-$timestamp = $_GET['timestamp'];
-$echostr = $_GET['echostr'];
 
-//
-$tmpArr = array($nonce, TOKEN);
-sort($tmpArr);
+define("TOKEN", "1990c"); //TOKEN值
+$wechatObj = new wechat();
+$wechatObj->valid();
+class wechat {
+	public function valid() {
+		$echoStr = $_GET["echostr"];
+		if($this->checkSignature()){
+			echo $echoStr;
+			exit;
+		}
+	}
 
-//
-$tmpStr = implode($tmpArr);
-
-//
-$tmpStr = shal($tmpStr);
-
-//
-if($tmpStr == $signature) {
-  //
-  echo $echostr;
+	private function checkSignature() {
+		$signature = $_GET["signature"];
+		$timestamp = $_GET["timestamp"];
+		$nonce = $_GET["nonce"];
+		$token = TOKEN;
+		$tmpArr = array($token, $timestamp, $nonce);
+		sort($tmpArr);
+		$tmpStr = implode( $tmpArr );
+		$tmpStr = sha1( $tmpStr );
+		if( $tmpStr == $signature ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
-
 ?>
