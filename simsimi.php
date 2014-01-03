@@ -30,7 +30,7 @@ class wechat {
 		</xml>";
 
 		$msgType = "text"; //消息类型
-		$contentStr = SimSimi($keyword);//'我是管理员，请问有什么可以帮到您吗？'; //返回消息内容
+		$contentStr = Weather($keyword);//'我是管理员，请问有什么可以帮到您吗？'; //返回消息内容
 
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
@@ -38,6 +38,10 @@ class wechat {
 		echo $resultStr; //输出结果
 	}
 }
+
+/*
+获取自动机器人回复函数
+*/
 function SimSimi($keyword) {
 
 	//----------- 获取COOKIE ----------//
@@ -67,4 +71,18 @@ function SimSimi($keyword) {
 		return '我还不会回答这个问题...';
 	}
 }
+/*
+获取天气子函数
+*/
+function Weather($keyword){
+	$url = "http://api2.sinaapp.com/search/weather/?appkey=0020130430&appsecert=fa6095e113cd28fd&reqtype=text&keyword=".urlencode($keyword);
+	$weatherJson = file_get_contents($url);
+	$weather = json_decode($weatherJson, true);
+	if($weather['text']['content']){
+	    return $weather['text']['content'];
+	}else{
+	    return "不存在该地点的天气，你的输入有误！";
+	}
+}
+
 ?>
