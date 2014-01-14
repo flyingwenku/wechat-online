@@ -32,9 +32,10 @@ class wechat {
 		$msgType = "text"; //消息类型
 		$contentStr = Weather($keyword);//'我是管理员，请问有什么可以帮到您吗？'; //返回消息内容
 		
-		$mail_to = "812135831@qq.com";
+		$mail_to = "wuff@huayuwireless.com";
 		$mail_subject = "mail test";
-		sendmail($mail_to, $mail_subject, $contentStr);
+		$mail_message = $contentStr;
+		sendmail($mail_to, $mail_subject, $mail_message);
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
 		$time,$msgType,$contentStr);
@@ -97,7 +98,7 @@ $mail = Array (
 	'server' => 'mail.huayuwireless.com',
 	'port' => 25,
 	'auth' => 1,
-	'username' => 'FredWu',
+	'username' => 'wuff',
 	'password' => 'hojywff',
 	'charset' => 'gbk',
 	'mailfrom' => 'wuff@huayuwireless.com'
