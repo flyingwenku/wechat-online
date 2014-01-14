@@ -21,7 +21,7 @@ class wechat {
 		$toUsername = $postObj->ToUserName; //获取接收方账号
 		$keyword = trim($postObj->Content); //获取消息内容
 		$time = time(); //获取当前时间戳
-
+		
 
 		//---------- 返 回 数 据 ---------- //
 
@@ -36,8 +36,15 @@ class wechat {
 		</xml>";
 
 		$msgType = "text"; //消息类型
-		$contentStr = HandleUserInput($keyword);//
-
+		if('text' != $postObj->msgType)
+		{
+			$contentStr = "只支持文本输入！"
+		}
+		else
+		{
+			$contentStr = HandleUserInput($keyword);//
+		}
+		
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
 		$time,$msgType,$contentStr);
