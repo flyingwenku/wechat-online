@@ -36,7 +36,7 @@ class wechat {
 		//$mail_to = "812135831@qq.com";
 		//$mail_subject = "mail test";
 		$mail_message = $contentStr;
-		SentMail($mail_message);
+		//SentMail($mail_message);
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
 		$time,$msgType,$contentStr);
