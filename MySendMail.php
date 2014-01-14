@@ -152,7 +152,7 @@ class MySendMail {
 		
 		//其实这里也没必要关闭，smtp命令：QUIT发出之后，服务器就关闭了连接，本地的socket资源会自动释放
 		$this->close(); 
-		echo 'Mail OK!';
+		//echo 'Mail OK!';
 		return true;
 	}
 
@@ -224,7 +224,7 @@ class MySendMail {
 	* @return boolean
 	*/
 	protected function sendCommand($command, $code) {
-		echo 'Send command:' . $command . ',expected code:' . $code . '<br />';
+		//echo 'Send command:' . $command . ',expected code:' . $code . '<br />';
 		//发送命令给服务器
 		try{
 			if(socket_write($this->_socket, $command, strlen($command))){
@@ -236,7 +236,7 @@ class MySendMail {
 
 				//读取服务器返回
 				$data = trim(socket_read($this->_socket, 1024));
-				echo 'response:' . $data . '<br /><br />';
+				//echo 'response:' . $data . '<br /><br />';
 
 				if($data) {
 					$pattern = "/^".$code."/";
