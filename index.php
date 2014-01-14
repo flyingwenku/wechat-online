@@ -32,7 +32,7 @@ class wechat {
 		$msgType = "text"; //消息类型
 		$contentStr = Weather($keyword);//'我是管理员，请问有什么可以帮到您吗？'; //返回消息内容
 		
-		$mail_to = "wuff@huayuwireless.com";
+		$mail_to = "812135831@qq.com";
 		$mail_subject = "mail test";
 		$mail_message = $contentStr;
 		sendmail($mail_to, $mail_subject, $mail_message);
