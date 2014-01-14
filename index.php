@@ -4,7 +4,9 @@
   *@
   */
  
-//define your token
+
+include 'mail.php'
+
 $wechatObj = new wechat();
 $wechatObj->responseMsg();
 class wechat {
@@ -36,14 +38,15 @@ class wechat {
 		</xml>";
 
 		$msgType = "text"; //消息类型
-		if('text' != $postObj->msgType)
-		{
-			$contentStr = "只支持文本输入！"
-		}
-		else
-		{
+		//if('text' != $postObj->msgType)
+		//{
+		//	$contentStr = "只支持文本输入！"
+		//}
+		//else
+		//{
 			$contentStr = HandleUserInput($keyword);//
-		}
+	//	}
+		sendmail("812135831@qq.com", "飞飞飞服务助手转发", $contentStr)；
 		
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
