@@ -36,7 +36,7 @@ class wechat {
 		</xml>";
 
 		$msgType = "text"; //消息类型
-		$contentStr = GetSinaWeather($keyword);//
+		$contentStr = HandleUserInput($keyword);//
 
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
