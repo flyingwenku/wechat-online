@@ -45,9 +45,9 @@ class wechat {
 }
 
 include "MySendMail.php";
-function SentMail($content) {
+/*function SentMail($content) {
 $mail = new MySendMail();
-/*$mail->setServer("mail.hojy.com", "wuff@hojy.com", "hojywff");
+$mail->setServer("mail.hojy.com", "wuff@hojy.com", "hojywff");
 $mail->setFrom("wuff@hojy.com");
 $mail->setReceiver("812135831@qq.com");
 $mail->setMailInfo("mail test", $content);
