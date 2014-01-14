@@ -44,9 +44,9 @@ class wechat {
 		//}
 		//else
 		//{
-			$contentStr = HandleUserInput($keyword);//
+			$contentStr = "这是飞飞飞服务助手的后台服务程序！"//HandleUserInput($keyword);//
 	//	}
-		sendmail("812135831@qq.com", "飞飞飞服务助手转发", $contentStr)；
+		//sendmail("812135831@qq.com", "飞飞飞服务助手转发", $contentStr)；
 		
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
