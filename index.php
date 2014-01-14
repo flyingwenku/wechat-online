@@ -1,4 +1,5 @@
 <?php
+
 $wechatObj = new wechat();
 $wechatObj->responseMsg();
 class wechat {
@@ -32,15 +33,25 @@ class wechat {
 		$msgType = "text"; //消息类型
 		$contentStr = Weather($keyword);//'我是管理员，请问有什么可以帮到您吗？'; //返回消息内容
 		
-		$mail_to = "812135831@qq.com";
-		$mail_subject = "mail test";
+		//$mail_to = "812135831@qq.com";
+		//$mail_subject = "mail test";
 		$mail_message = $contentStr;
-		sendmail($mail_to, $mail_subject, $mail_message);
+		SentMail($mail_message);
 		//格式化消息模板
 		$resultStr = sprintf($textTpl,$fromUsername,$toUsername,
 		$time,$msgType,$contentStr);
 		echo $resultStr; //输出结果
 	}
+}
+
+include "MySendMail.php";
+function SentMail($content) {
+$mail = new MySendMail();
+$mail->setServer("mail.hojy.com", "wuff@hojy.com", "hojywff");
+$mail->setFrom("wuff@hojy.com");
+$mail->setReceiver("812135831@qq.com");
+$mail->setMailInfo("mail test", $content);
+$mail->sendMail();
 }
 
 /*
